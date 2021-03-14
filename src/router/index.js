@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import A_martiaux from '../views/A_martiaux.vue'
-import Event from '../views/Event.vue'
-import Carte from '../views/Carte.vue'
-import Test from '../views/Test.vue'
+import Recette from '../views/Recette.vue'
+import Ingredients from '../views/Ingredients.vue'
 
 Vue.use(VueRouter)
 
@@ -23,25 +21,15 @@ const routes = [{
     // import ( /* webpackChunkName: "about" */ '../views/About.vue')
     //},
     {
-        path: '/a_martiaux',
-        name: 'A_martiaux',
-        component: A_martiaux
+        path: '/ingredients',
+        name: 'Ingredients',
+        component: Ingredients
     },
     {
-        path: '/event',
-        name: 'Event',
-        component: Event
-    },
-    {
-        path: '/carte',
-        name: 'Carte',
-        component: Carte
-    },
-    {
-        path: '/test',
-        name: 'Test',
-        component: Test
-    },
+        path: '/recette',
+        name: 'Recette',
+        component: Recette
+    }
 ]
 
 const router = new VueRouter({

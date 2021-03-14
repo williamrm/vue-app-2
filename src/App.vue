@@ -2,9 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/a_martiaux">Art Martiaux</router-link> |
-      <router-link to="/event">Evenements</router-link> |
-      <router-link to="/carte">Carte</router-link>
+      <router-link to="/recette">Recette</router-link> |
+      <router-link to="/ingredients">Ingredients</router-link>
     </div>
     <router-view/>
   </div>
@@ -21,15 +20,17 @@
 #nav {
   padding: 20px;
   background-color: #444444;
-  text-align: end;
+  text-align: start;
 }
 
 #nav a {
   font-weight: bold;
   color: #ffffff;
+  text-decoration: none;
+  margin-inline: 30px;
 }
 
 #nav a.router-link-exact-active {
-  color: #d10202;
+  color: #0066ff;
 }
 </style>
