@@ -24,6 +24,7 @@
                         </b-card-text>
                     </b-card>
                 </li>
+                <span> Powered with Kevin JUGUIN and François-Pierre ROUSSEAU</span>
             </ul>
         </div>
     </div>

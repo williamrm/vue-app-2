@@ -8,13 +8,15 @@
                     v-bind:title=rec.strMeal
                     v-bind:img-src=rec.strMealThumb img-width="400rem" img-height="400rem"
                     img-left
-                    style="max-width: 100rem; max-height: 100rem;"
+                    style="max-width: 50rem; max-height: 100rem;"
                     id="card"
                 >
                 </b-card>
             </li>
+            <span> Powered with Kevin JUGUIN and François-Pierre ROUSSEAU</span>
         </ul>
     </div>
+    
 </template>
 
 <script>
@@ -26,6 +28,7 @@ export default{
         return {
             recipe: {},
             researchedIngredient: '',
+            idRecipe: '',
         }
     },
 
@@ -38,7 +41,8 @@ export default{
                 .then( response => {
                     recipes.push(response.data.meals)
                     this.recipe = recipes[0]
-                    console.log(this.recipe)
+                    this.idRecipe = this.recipe.idMeal
+                    console.log(this.recipe.idMeal)
                 })
                 .catch((error) => {
                     console.log(error)
