@@ -1,7 +1,11 @@
 <template>
     <div class="app" id="main">
-        <input v-model="researchedRecipe" placeholder="Search a recipe">
-        <button @click="getRecipe">Search</button>
+        <b-input-group size="md" id="search">
+            <b-form-input v-model="researchedRecipe" placeholder="Search a recipe"></b-form-input>
+            <b-input-group-append>
+                <b-button @click="getRecipe" size="md" text="Search" variant="success">Button</b-button>
+            </b-input-group-append>
+        </b-input-group>
         <div v-if="recipe.length>0">
             <ul id="ul">
                 <li v-for="rec in recipe" :key="rec.idMeal">
@@ -124,5 +128,10 @@ export default {
   }
   #card {
     margin-bottom: 2%;
+  }
+  #search {
+    padding-right: 80%;
+    margin-bottom: 2%;
+    margin-left: 2.2%;
   }
 </style>

@@ -1,7 +1,11 @@
 <template>
     <div class="app" id="main">
-        <input v-model="researchedIngredient" placeholder="Search a ingredient">
-        <button @click="getRecipe">Search</button>
+        <b-input-group size="md" id="search">
+            <b-form-input v-model="researchedRecipe" placeholder="Search an ingredient"></b-form-input>
+            <b-input-group-append>
+                <b-button @click="getRecipe" size="md" text="Search" variant="success">Button</b-button>
+            </b-input-group-append>
+        </b-input-group>
         <ul v-if="recipe.length>0" id="ul">
             <li v-for="rec in recipe" :key="rec.idMeal">
                 <b-card
@@ -29,10 +33,24 @@ export default{
             recipe: {},
             researchedIngredient: '',
             idRecipe: '',
+            ingredients: [],
+            ingredientRecipe: '',
         }
     },
 
     methods: {
+        getAllIngredients: function () {
+            this.axios
+                .get("https://www.themealdb.com/api/json/v1/1/list.php?i=list")
+                .then( response => {
+                    this.ingredients = response.data.meals
+                    console.log(this.ingredients)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        },
+
         getRecipe: function() {
             var recipes = []
             console.log(apiURL + this.researchedIngredient)
@@ -47,8 +65,21 @@ export default{
                 .catch((error) => {
                     console.log(error)
                 })
+        },
+
+        getIngredientRecipe: function (strMeal) {
+            console.log(strMeal)
+            this.axios
+                .get("https://www.themealdb.com/api/json/v1/1/search.php?s=" + strMeal)
+                .then( response => {
+                    this.ingredientRecipe = response.data.meals
+                    console.log(strMeal)
+                })
         }
     },
+    mounted () {
+        this.getAllIngredients()
+    }
 }
 </script>
 
@@ -62,5 +93,10 @@ export default{
   }
   #card {
     margin-bottom: 2%;
+  }
+  #search {
+    padding-right: 80%;
+    margin-bottom: 2%;
+    margin-left: 2.2%;
   }
 </style>
