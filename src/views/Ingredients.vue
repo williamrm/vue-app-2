@@ -3,7 +3,7 @@
         <input v-model="researchedIngredient" placeholder="Search a ingredient">
         <button @click="getRecipe">Search</button>
         <ul v-if="recipe.length>0" id="ul">
-            <li v-for="rec in recipe[0]" :key="rec.idMeal">
+            <li v-for="rec in recipe" :key="rec.idMeal">
                 <b-card
                     v-bind:title=rec.strMeal
                     v-bind:img-src=rec.strMealThumb img-width=" 300rem"
@@ -23,21 +23,21 @@ export default{
 
     data() {
         return {
-            recipe: [],
+            recipe: {},
             researchedIngredient: '',
         }
     },
 
     methods: {
         getRecipe: function() {
-            this.recipe = []
+            var recipes = []
             console.log(apiURL + this.researchedIngredient)
             this.axios
                 .get(apiURL + this.researchedIngredient)
                 .then( response => {
-                    this.recipe.push(response.data.meals)
-                    
-                    console.log(this.recipe[0])
+                    recipes.push(response.data.meals)
+                    this.recipe = recipes[0]
+                    console.log(this.recipe)
                 })
                 .catch((error) => {
                     console.log(error)
