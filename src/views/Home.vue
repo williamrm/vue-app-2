@@ -5,9 +5,9 @@
       <li v-for="ramdom in ramdomRecipes" :key="ramdom.idMeal">
           <b-card
             v-bind:title=ramdom.strMeal
-            v-bind:img-src=ramdom.strMealThumb
-            img-top
-            style="max-width: 25rem;"
+            v-bind:img-src=ramdom.strMealThumb img-width=" 300rem"
+            img-left
+            style="max-width: 100rem;"
           >
             <b-card-text>
               Origin : {{ ramdom.strArea }}
@@ -46,7 +46,7 @@ export default {
     ramdom: function() {
       this.ramdomRecipes = []
       var i= 0
-      for(i; i <5; i++){
+      for(i; i <10; i++){
         this.axios
           .get(apiURL + 'random.php')
           .then( response => {

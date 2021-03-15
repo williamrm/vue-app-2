@@ -6,9 +6,9 @@
             <li v-for="rec in recipe[0]" :key="rec.idMeal">
                 <b-card
                     v-bind:title=rec.strMeal
-                    v-bind:img-src=rec.strMealThumb
-                    img-top
-                    style="max-width: 25rem;"
+                    v-bind:img-src=rec.strMealThumb img-width=" 300rem"
+                    img-left
+                    style="max-width: 100rem;"
                 >
                     <b-card-text>
                         Origin : {{ rec.strArea }}
