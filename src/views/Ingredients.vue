@@ -1,14 +1,15 @@
 <template>
-    <div class="app">
+    <div class="app" id="main">
         <input v-model="researchedIngredient" placeholder="Search a ingredient">
         <button @click="getRecipe">Search</button>
         <ul v-if="recipe.length>0" id="ul">
             <li v-for="rec in recipe" :key="rec.idMeal">
                 <b-card
                     v-bind:title=rec.strMeal
-                    v-bind:img-src=rec.strMealThumb img-width=" 300rem"
+                    v-bind:img-src=rec.strMealThumb img-width="400rem" img-height="400rem"
                     img-left
-                    style="max-width: 100rem;"
+                    style="max-width: 100rem; max-height: 100rem;"
+                    id="card"
                 >
                 </b-card>
             </li>
@@ -50,5 +51,12 @@ export default{
 <style scoped>
   #ul {
     list-style: none;
+  }
+  #main {
+    margin-top: 2%;
+    margin-left: 5%;
+  }
+  #card {
+    margin-bottom: 2%;
   }
 </style>
